@@ -1,27 +1,29 @@
-package com.mlt;
+package com.registered_user;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnect {
 
-	private static String url ="jdbc:mysql://localhost:3306/medicare";
-	private static String userName="root";
-	private static String password="Danindu@123";
+	private static String url = "jdbc:mysql://localhost:3306/medicare";
+	private static String userName = "root";
+	private static String password = "Danindu@123";
 	private static Connection con;
-	public static Connection getConection()
-	{
-		try
-		{
+	
+	public static Connection getConnection() {
+		
+		try {
+			
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection(url, userName, password);
+			
+			con = DriverManager.getConnection(url, userName, password);
+			
+			
+		}
+		catch(Exception e) {
+			System.out.println("Database connection is not success");
 		}
 		
-		catch(Exception e)
-		{
-			System.out.println("Database connection is not success!!!");
-		}
-		
-	   return con;	 
+		return con;
 	}
 }
