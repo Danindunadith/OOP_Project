@@ -1,4 +1,4 @@
-package com.mlt;
+package com.agent;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,19 +18,25 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username=request.getParameter("uid");
-		String password=request.getParameter("pass");
+		String username = request.getParameter("uid");
+		String password = request.getParameter("pass");
 		
 		try {
-		     List<mlt> mlDetails =mltDBUtill.validate(username, password);
-		     request.setAttribute("mlDetails",mlDetails);
+			
+		    List<Agent> agnDetails = AgentDBUtil.validate(username, password);
+		    request.setAttribute("agnDetails", agnDetails);
 		}
+	   catch(Exception e) {
+		   
+		   e.printStackTrace();
+	   }
 		
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		RequestDispatcher dis = request.getRequestDispatcher("useraccount.jsp");   
+		
+		RequestDispatcher dis = request.getRequestDispatcher("useraccount.jsp");
 		dis.forward(request, response);
+		
+		
+		
 	}
 
 }
