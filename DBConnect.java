@@ -1,4 +1,4 @@
-package com.registered_user;
+package com.agent;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
